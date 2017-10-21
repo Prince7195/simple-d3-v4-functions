@@ -1,0 +1,330 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#config">Config</a></li>
+                <li><a data-toggle="tab" href="#axisControl">Axis Control</a></li>
+                <li><a data-toggle="tab" href="#theme">Theme</a></li>
+            </ul>
+
+            <div class="tab-content" style="padding-top:4%">
+                <!-- Config Tab -->
+                <div id="config" class="tab-pane fade  active in">
+
+                    <!-- Visualization panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#Cvisualization">Visualization</a>
+                                </h4>
+                            </div>
+                            <div id="Cvisualization" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default" id="btnBar" *ngFor="let chartType of chartingTypes" (click)='drawChart(chartType.value)'>{{chartType.name}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Choose DataSet panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CchooseDataset">Choose DataSet</a>
+                                </h4>
+                            </div>
+                            <div id="CchooseDataset" class="panel-collapse collapse">
+                                <div class="panel-body">Choose DataSet</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- X-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CxAxis">X-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="CxAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="xAxis">X-Axis</label>
+                                        <select class="form-control" [(ngModel)]='selectedX' name="xAxis" id="xAxis" (change)="drawChart()">
+                                            <option *ngFor="let option of axisXData" [ngValue]="option" >{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Y-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CyAxis">Y-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="CyAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="yAxis">Y-Axis</label>
+                                        <select class="form-control" [(ngModel)]='selectedY' name="yAxis" id="yAxis" (change)="drawChart()">
+                                            <option *ngFor="let option of axisYData" [ngValue]="option" >{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Z-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CzAxis">Z-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="CzAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="zAxis">Z-Axis</label>
+                                        <select class="form-control" [(ngModel)]='selectedZ' name="zAxis" id="zAxis" (change)="drawChart()">
+                                            <option *ngFor="let option of axisZData" [ngValue]="option" >{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Series Columns panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CseriesColumn">Series Columns</a>
+                                </h4>
+                            </div>
+                            <div id="CseriesColumn" class="panel-collapse collapse">
+                                <div class="panel-body">Series Columns</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Columns panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CfilterColumn">Filter Columns</a>
+                                </h4>
+                            </div>
+                            <div id="CfilterColumn" class="panel-collapse collapse">
+                                <div class="panel-body">Filter Columns</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Options panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#CchartingOptions">Chart Options</a>
+                                </h4>
+                            </div>
+                            <div id="CchartingOptions" class="panel-collapse collapse">
+                                <div class="panel-body">Chart Options</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Axis Control Tab -->
+                <div id="axisControl" class="tab-pane fade">
+
+                    <!-- X-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#ACxAxis">X-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="ACxAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showAxisX" (change)="drawChart()">Show Axis
+                                    </label>
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showLableAxisX" (change)="drawChart()">Show Axis Lable
+                                    </label>
+                                    <div *ngIf="showLableAxisX">
+                                        <label for="dynamicXAxisLabel">X-Axis Name</label>
+                                        <input type="text" name="dynamicXAxisLabel" id="dynamicXAxisLabel" [(ngModel)]="dynamicXAxisLabel" (change)="drawChart()" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Y-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#ACyAxis">Y-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="ACyAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showAxisY" (change)="drawChart()">Show Axis
+                                    </label>
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showLableAxisY" (change)="drawChart()">Show Axis Lable
+                                    </label>
+                                    <div *ngIf="showLableAxisY">
+                                        <label for="dynamicYAxisLabel">Y-Axis Name</label>
+                                        <input type="text" name="dynamicYAxisLabel" id="dynamicYAxisLabel" [(ngModel)]="dynamicYAxisLabel" (change)="drawChart()" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Z-Axis panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#ACzAxis">Z-Axis</a>
+                                </h4>
+                            </div>
+                            <div id="ACzAxis" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showAxisZ" (change)="drawChart()">Show Axis
+                                    </label>
+                                    <label class="checkbox" style="padding-left: 8%;">
+                                        <input type="checkbox" [(ngModel)]="showLableAxisZ" (change)="drawChart()">Show Axis Lable
+                                    </label>
+                                    <div *ngIf="showLableAxisZ">
+                                        <label for="dynamicZAxisLabel">Z-Axis Name</label>
+                                        <input type="text" name="dynamicZAxisLabel" id="dynamicZAxisLabel" [(ngModel)]="dynamicZAxisLabel" (change)="drawChart()" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legend panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#AClegend">Legend</a>
+                                </h4>
+                            </div>
+                            <div id="AClegend" class="panel-collapse collapse">
+                                <div class="panel-body">Legend</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Theme Tab -->
+                <div id="theme" class="tab-pane fade">
+
+                    <!-- Palette panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#Tpalette">Palette</a>
+                                </h4>
+                            </div>
+                            <div id="Tpalette" class="panel-collapse collapse">
+                                <div class="panel-body">Palette</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Axis Lables panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#TaxisLabels">Axis Lables</a>
+                                </h4>
+                            </div>
+                            <div id="TaxisLabels" class="panel-collapse collapse">
+                                <div class="panel-body">Axis Lables</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Data Values panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#TdataValues">Data Values</a>
+                                </h4>
+                            </div>
+                            <div id="TdataValues" class="panel-collapse collapse">
+                                <div class="panel-body">Data Values</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ticks panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#Tticks">Ticks</a>
+                                </h4>
+                            </div>
+                            <div id="Tticks" class="panel-collapse collapse">
+                                <div class="panel-body">Ticks</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legend panel -->
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#Tlegend">Legend</a>
+                                </h4>
+                            </div>
+                            <div id="Tlegend" class="panel-collapse collapse">
+                                <div class="panel-body">Legend</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-9 chartDiv">
+            <div class="col-xs-12" id="chart"></div>
+        </div>
+    </div>
+</div>

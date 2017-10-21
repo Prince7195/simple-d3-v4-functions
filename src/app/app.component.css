@@ -1,0 +1,25 @@
+.container-fluid {
+    padding-top: 5em;
+}
+
+span {
+    font-style: italic;
+}
+
+.chart-line {
+    fill: none;
+    stroke: yellowgreen;
+    stroke-width: 2px;
+}
+
+.chart-area {
+    fill: yellowgreen;
+}
+
+.chart-bar {
+    fill: yellowgreen;
+}
+
+.chart-column {
+    fill: yellowgreen;
+}

@@ -1,0 +1,51 @@
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" id="btnBar" *ngFor="let chartType of chartingTypes" (click)='drawChart(chartType.value)'>{{chartType.name}}</button>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" [(ngModel)]="axis" (change)="drawChart()">Axis
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" [(ngModel)]="lableAxis" (change)="drawChart()">Axis Lable
+                    </label>
+                    <label class="checkbox-inline" *ngIf="chartType == 'area'">
+                        <input type="checkbox" [(ngModel)]="lineInArea" (change)="drawChart()">Line in Area
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group">
+                        <label for="xAxis">X-Axis</label>
+                        <select class="form-control" [(ngModel)]='selectedX' name="xAxis" id="xAxis" (change)="drawChart()">
+                          <option *ngFor="let option of axisXData" [ngValue]="option" >{{option}}</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group">
+                        <label for="yAxis">Y-Axis</label>
+                        <select class="form-control" [(ngModel)]='selectedY' name="yAxis" id="yAxis" (change)="drawChart()">
+                          <option *ngFor="let option of axisYData" [ngValue]="option" >{{option}}</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="list-group-item" *ngIf=false>
+                    <div class="form-group">
+                        <label for="zAxis">Z-Axis</label>
+                        <select class="form-control" [(ngModel)]='selectedZ' name="zAxis" id="zAxis" (change)="drawChart()">
+                          <option *ngFor="let option of axisZData" [ngValue]="option" >{{option}}</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-9 chartDiv">
+            <div class="col-xs-10" id="chart"></div>
+        </div>
+    </div>
+</div> -->
